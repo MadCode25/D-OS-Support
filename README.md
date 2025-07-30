@@ -6,3 +6,6 @@
 <h1 align="center">D-OS Support is here to assist you about D-OS</h1>
 
 <p align="center">Whether your problem or question is with the startup, release dates, what's new, issues with the applications, or more.</p>
+
+<h1 align="center">DISCLAIMER:</h1>
+<h5 align="center">This is version 1.0 beta, it may not work well or answer <br> other questions, since its "question list" may not have those.</h5>

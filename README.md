@@ -1,4 +1,4 @@
-[D-OS Support](D-OS%20Support%20Icon.png)
-<p align="center">
+
+<p align="center" style="width: 100px; height: auto;">
   <img src="D-OS Support Icon.png" alt="D-OS Support" />
 </p>

@@ -1,4 +1,4 @@
 
-<p align="center" style="width: 900px; height: auto;">
+<p align="center" width: 900px>
   <img src="D-OS Support Icon.png" alt="D-OS Support" />
 </p>

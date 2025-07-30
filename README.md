@@ -1,4 +1,4 @@
 
 <p align="center">
-  <img src="D-OS Support Icon.png" alt="Untitled design.svg" width="500px"/>
+  <img src="Untitled design.svg" alt="D-OS Support" width="100px"/>
 </p>

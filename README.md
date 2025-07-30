@@ -1,6 +1,7 @@
 
 <p align="center">
   <img src="Untitled design.svg" alt="D-OS Support" width="300px"/>
+  Logo is exclusive for D-OS.
 </p>
 
 <h1 align="center">D-OS Support is here to assist you about D-OS</h1>
@@ -9,3 +10,4 @@
 
 <h1 align="center">DISCLAIMER:</h1>
 <h5 align="center">This is version 1.0 beta, it may not work well or answer <br> other questions, since its "question list" may not have those.</h5>
+

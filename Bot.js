@@ -164,7 +164,7 @@ function handleFollowUp() {
             input.includes("how to turn on d-os?") ||
             input.includes("how do i activate d-os") ||
             input.includes("how do i activate d-os?")
-        )
+        ) && last.includes("Sure! What do you need help with regarding D-OS?")
     ) {
         appendReply("To activate D-OS, open the D-OS Emulator (or the official D-OS 1 website, if you are using D-OS 1). Then, if you are in the D-OS Emulator, choose the D-OS version you want to use, and then find the 'D-OS' button. If you are using D-OS 1, just click the 'Try Now' button on the website.");
         appendReply("If you are having issues, just tell me, and I will try to help or tell AmadOS about it.");
@@ -173,7 +173,6 @@ function handleFollowUp() {
         appendReply("Hmm, I can't provide more details on that yet. Try asking a specific question.");
     }
 
-    conversationState = ""; // Reset after handling follow-up
 }
 
 // ⏎ Auto-send on Enter

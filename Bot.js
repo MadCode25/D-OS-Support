@@ -1,5 +1,6 @@
 let lastBotMessage = "";      // Stores last visible bot message
 let conversationState = "";   // Stores special state flags like "help_prompt"
+let lastItalicBotMessage = ""; // Stores the las visible ITALIC message, to prevent cloning.
 
 function appendReply(message) {
     const answer = document.getElementById("answer");
@@ -25,11 +26,11 @@ function appendReply(message) {
     conversationState = ""; // Reset unless explicitly set
 }
 
-function appendReplyItalic(message) {
+function appendReplyItalic(message2) {
     const answer = document.getElementById("answer");
 
     const pItalic = document.createElement("p");
-    pItalic.textContent = message;
+    pItalic.textContent = message2;
 
     Object.assign(pItalic.style, {
         marginBottom: "10px",
@@ -46,7 +47,7 @@ function appendReplyItalic(message) {
     answer.appendChild(pItalic);
     window.scrollTo(0, document.body.scrollHeight);
 
-    lastBotMessage = message;
+    lastItalicBotMessage = message2;
     conversationState = ""; // Reset unless explicitly set
 }
 

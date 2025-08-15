@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="icon" type="image/x-icon" href="D-OS-Support-Icon.png" />
+    <title>D-OS Support</title>
+</head>
+<body>
+    <div class="title">
+        <h1 class="sans-serif-light">D-OS Support</h1>
+        <h5 class="sans-serif-light">What can I help about D-OS?</h5>
+        <h6 class="sans-serif-light">Version 1.0 Beta</h6>
+    </div>
+
+    <!-- Scrollable content area for answers -->
+    <div class="innerBody">
+        <p id="answer"></p>
+    </div>
+
+    <!-- Fixed input bar at bottom -->
+    <div class="inputBar">
+        <input class="userInput" id="userInput" placeholder="Ask something about D-OS" />
+        <button class="send" onclick="getAnswer()">↑</button>
+    </div>
+
+    <script src="Bot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+body {
+    background-color: rgb(49, 49, 49);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.title {
+    align-items: center;
+    text-align: center;
+    transform: translateY(80px);
+}
+
+.sans-serif-dark {
+    font-family: sans-serif;
+    color: black;
+}
+
+.sans-serif-light {
+    font-family: sans-serif;
+    color: rgb(167, 167, 167);
+}
+
+.innerBody {
+    margin: 0 30px;
+    padding-bottom: 120px; /* leaves room for the fixed inputBar */
+    transform: translateY(120px);
+}
+
+#answer {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: rgb(200, 200, 200);
+    font-size: 18px;
+}
+
+/* Fixed input bar */
+.inputBar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(49, 49, 49);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.userInput {
+    width: 60%;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    padding: 0 15px;
+    background-color: rgb(91, 91, 91);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.send {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(141, 141, 141);
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.send:hover {
+    background-color: rgb(173, 173, 173);
+}

@@ -1,6 +1,6 @@
 let lastBotMessage = "";      // Stores last visible bot message
 let conversationState = "";   // Stores special state flags like "help_prompt"
-let lastItalicBotMessage = ""; // Stores the las visible ITALIC message, to prevent cloning.
+let lastItalicBotMessage = ""; // Stores the last visible ITALIC message, to prevent cloning.
 
 function appendReply(message) {
     const answer = document.getElementById("answer");
@@ -68,7 +68,9 @@ function getAnswer() {
     if (
         input.includes("hi") ||
         input.includes("hello") ||
-        input.includes("sup")
+        input.includes("sup") ||
+        input.includes("wsg")||
+        input.includes("wsp")
     ) {
         appendReply("Hello! What can I help with D-OS?");
     }

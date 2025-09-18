@@ -8,10 +8,11 @@
     <title>D-OS Support</title>
 </head>
 <body>
-    <div class="title">
+    <div class="title" id="titleBar">
         <h1 class="sans-serif-light">D-OS Support</h1>
-        <h5 class="sans-serif-light">What can I help about D-OS?</h5>
-        <h6 class="sans-serif-light">Version 1.0 Beta</h6>
+        <h4 class="sans-serif-light">What can I help about D-OS?</h4>
+        <h5 class="sans-serif-light">Version 1.6 Alpha</h5>
+        <h6 class="sans-serif-light">Your Assistant of D-OS.</h6>
     </div>
 
     <!-- Scrollable content area for answers -->
@@ -22,7 +23,7 @@
     <!-- Fixed input bar at bottom -->
     <div class="inputBar">
         <input class="userInput" id="userInput" placeholder="Ask something about D-OS" />
-        <button class="send" onclick="getAnswer()">↑</button>
+        <button class="send" id="sendButton" onclick="getAnswer()">Ask</button>
     </div>
 
     <script src="Bot.js"></script>

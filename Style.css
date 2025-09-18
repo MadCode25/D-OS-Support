@@ -9,7 +9,12 @@ body {
 .title {
     align-items: center;
     text-align: center;
-    transform: translateY(80px);
+    align-self: center;
+    transform: translateY(20px);
+    background-color: rgb(78, 78, 78);
+    width: 70%;
+    padding: 5px;
+    margin: 0 auto; 
 }
 
 .sans-serif-dark {
@@ -70,9 +75,21 @@ body {
     background-color: rgb(141, 141, 141);
     color: black;
     font-size: 16px;
+    font-style: bold;
     cursor: pointer;
 }
 
 .send:hover {
     background-color: rgb(173, 173, 173);
+}
+
+@keyframes glideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

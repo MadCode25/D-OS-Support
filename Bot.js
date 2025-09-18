@@ -1,10 +1,8 @@
 let lastBotMessage = "";      // Stores last visible bot message
 let conversationState = "";   // Stores special state flags like "help_prompt"
-let lastItalicBotMessage = ""; // Stores the last visible ITALIC message, to prevent cloning.
 
 function appendReply(message) {
     const answer = document.getElementById("answer");
-
     const p = document.createElement("p");
     p.textContent = message;
 
@@ -23,14 +21,13 @@ function appendReply(message) {
     window.scrollTo(0, document.body.scrollHeight);
 
     lastBotMessage = message;
-    conversationState = ""; // Reset unless explicitly set
+    conversationState = "";
 }
 
-function appendReplyItalic(message2) {
+function appendReplyItalic(message) {
     const answer = document.getElementById("answer");
-
     const pItalic = document.createElement("p");
-    pItalic.textContent = message2;
+    pItalic.textContent = message;
 
     Object.assign(pItalic.style, {
         marginBottom: "10px",
@@ -47,31 +44,28 @@ function appendReplyItalic(message2) {
     answer.appendChild(pItalic);
     window.scrollTo(0, document.body.scrollHeight);
 
-    lastItalicBotMessage = message2;
-    conversationState = ""; // Reset unless explicitly set
+    lastBotMessage = message;
+    conversationState = "";
 }
-
 
 function getAnswer() {
     const inputElement = document.getElementById("userInput");
     const input = inputElement.value.toLowerCase().trim();
     inputElement.value = "";
 
-    // Check for follow-up phrasing
-    const isFollowUp = ["why", "how", "tell me more", "explain more", "what do you mean", "what's that", "what is that", "what's that?", "what is that?", "really", "really?"].some(phrase => input.includes(phrase));
+    // Follow-up check
+    const isFollowUp = [
+        "why", "how", "tell me more", "explain more", "what do you mean",
+        "what's that", "what is that", "really"
+    ].some(phrase => input.includes(phrase));
+
     if (isFollowUp && lastBotMessage) {
-        handleFollowUp();
+        handleFollowUp(input);
         return;
     }
 
     // --- MAIN BOT RESPONSES ---
-    if (
-        input.includes("hi") ||
-        input.includes("hello") ||
-        input.includes("sup") ||
-        input.includes("wsg")||
-        input.includes("wsp")
-    ) {
+    if (/^(hi|hello|sup)$/.test(input)) {
         appendReply("Hello! What can I help with D-OS?");
     }
 
@@ -86,11 +80,11 @@ function getAnswer() {
     }
 
     else if (input.includes("does amados have other oses")) {
-        appendReply("Yep! They do have other OSes, they have 2 kinds of OSes other than D-OS, 1 is G-OS, 2 is Windows WTV");
+        appendReply("Yep! They do have other OSes, they have 2 kinds of OSes other than D-OS, 1 is G-OS, 2 is Windows WTV.");
     }
 
     else if (input.includes("what is amados")) {
-        appendReply("AmadOS is a small system, controlled by one person, the person's name was M4, the actual name cannot be shown, AmadOS actually makes OSes, like D-OS, Windows WTV, and G-OS.");
+        appendReply("AmadOS is a small system, controlled by one person, the person's name was M4. AmadOS makes OSes like D-OS, Windows WTV, and G-OS.");
     }
 
     else if (input.includes("what is d-os") || input.includes("what's d-os")) {
@@ -98,83 +92,56 @@ function getAnswer() {
     }
 
     else if (input.includes("who made you") || input.includes("who made u")) {
-        appendReply("I was made by AmadOS, to help users of D-OS like you to know more about D-OS. I might also not be able to answer questions that are unsupported or not included in my Javascript coding.");
-    }
-
-    else if (input === "oh") {
-        appendReplyItalic("(D-OS cannot understand your question, please try to rephrase it or ask something else.)");
+        appendReply("I was made by AmadOS, to help users of D-OS like you to know more about D-OS.");
     }
 
     else if (input.includes("i need help with d-os") || input.includes("i need help")) {
         appendReply("Sure! What do you need help with regarding D-OS?");
-        conversationState = "help_prompt"; // <-- Set help state here
+        conversationState = "help_prompt";
     }
 
+    else if (input.includes("does d-os have a start menu")) {
+        appendReplyItalic("Searching...");
+        setTimeout(function () {
+            appendReply("According to AmadOS' website, both D-OS 2 and D-OS 3 have a start menu, but D-OS 1 has an 'Uppertab' at the top instead.");
+        }, 1200);
+    }
+
+    else if (input.includes("thanks") || input.includes("thank you")) {
+        appendReply("You're welcome! If you have more questions, just ask.");
+    }
+
+    else if (input === "oh") {
+        appendReply("Oh? Do you want to know more about D-OS?");
+    }
+
+    // --- SINGLE fallback (only runs if no above matches) ---
     else {
-        appendReplyItalic("(D-OS cannot understand your question, please try to ask something else or ask something related to D-OS, it may be it's not in its 'question list'.)");
+        appendReplyItalic("(D-OS cannot understand your question, please try to ask something else or ask something related to D-OS.)");
     }
 }
 
 // 📌 Handle follow-up questions
-function handleFollowUp() {
-    const inputElement = document.getElementById("userInput");
-    const input = inputElement.value.toLowerCase().trim();
-    inputElement.value = "";
-
-    // Lowercase lastBotMessage for robust matching
+function handleFollowUp(input) {
     const last = lastBotMessage.toLowerCase();
 
     if (last.includes("i am a chatbot")) {
         appendReply("I was built using JavaScript to support users on AmadOS' D-OS platform.");
     }
-    else if (last.includes("d-os has 3 different series")) {
-        appendReply("D-OS 3 is the most modern version, featuring a startup sound and start menu.");
-    }
     else if (last.includes("they do have other oses")) {
-        appendReply("G-OS is the first ever OS, made by AmadOS, it was designed with shades of green, because G-OS was short for 'GreenOS'. Windows WTV has a Windows 95-like interface, with draggable windows, a start button, and more.");
+        appendReply("G-OS was the first AmadOS OS (GreenOS). Windows WTV has a Windows 95-like interface with draggable windows and a start menu.");
     }
-    else if (
-        last.includes("hello! what can i help with d-os?") &&
-        input.includes("what is d-os")
-    ) {
-        appendReply("D-OS is an operating system, made by AmadOS, in 2025");
+    else if (last.includes("d-os is a html os")) {
+        appendReply("Yes, and the latest version is D-OS 3 with a modern interface.");
     }
-    else if (
-        last.includes("the person's name was m4") &&
-        input.includes("what's his real name")
-    ) {
-        appendReply("As I said, his real name cannot be shown.");
-    }
-    else if (
-        last.includes("d-os is a html os, made by the amados owner, m4.") &&
-        (input.includes("rlly") || input.includes("really"))
-    ) {
-        appendReply("Yes, it is true, no need to be surprised.");
-    }
-    else if (
-        last.includes("i was made by amados") &&
-        input.includes("why")
-    ) {
-        appendReply("The reason why I can't answer some questions is because they might not be in my JavaScript 'question list'. I was made to help people that want to know more about D-OS.");
-        appendReply("Also, I am a Q&A bot — that's why I rely on a defined 'question list'.");
-    }
-    // Follow-up for help state
-    else if (
-        conversationState === "help_prompt" &&
-        (
-            input.includes("how to turn on d-os") ||
-            input.includes("how to turn on d-os?") ||
-            input.includes("how do i activate d-os") ||
-            input.includes("how do i activate d-os?")
-        ) && last.includes("Sure! What do you need help with regarding D-OS?")
-    ) {
-        appendReply("To activate D-OS, open the D-OS Emulator (or the official D-OS 1 website, if you are using D-OS 1). Then, if you are in the D-OS Emulator, choose the D-OS version you want to use, and then find the 'D-OS' button. If you are using D-OS 1, just click the 'Try Now' button on the website.");
-        appendReply("If you are having issues, just tell me, and I will try to help or tell AmadOS about it.");
+    else if (conversationState === "help_prompt" && input.includes("activate d-os")) {
+        appendReply("To activate D-OS, open the D-OS Emulator, choose a version, then press the 'D-OS' button.");
     }
     else {
-        appendReply("Hmm, I can't provide more details on that yet. Try asking a specific question.");
+        appendReply("Hmm, I don’t know how to answer that yet. Try rephrasing?");
     }
 
+    conversationState = "";
 }
 
 // ⏎ Auto-send on Enter
@@ -182,5 +149,20 @@ document.getElementById("userInput").addEventListener("keydown", function (event
     if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
         getAnswer();
+        animateTitleBar();
     }
 });
+
+document.getElementById("sendButton").addEventListener("click", function () {
+    getAnswer();
+    animateTitleBar();
+});
+
+// 🎬 Title bar animation
+function animateTitleBar() {
+    const titleBar = document.getElementById("titleBar");
+    titleBar.classList.remove("glideUp");
+    void titleBar.offsetWidth; // reflow
+    titleBar.classList.add("glideUp");
+}
+

@@ -9,5 +9,5 @@
 <p align="center">It is coded by JS, and the questions are scanned by the bot.</p>
 <br>
 <h1 align="center">DISCLAIMER:</h1>
-<h5 align="center">This is version 1.6 Alpha, it may not work well or answer <br> other questions, since its "question list" may not have those.</h5>
+<h5 align="center">This is version 1.8 Alpha, it may not work well or answer <br> other questions, since its "question list" may not have those.</h5>
 

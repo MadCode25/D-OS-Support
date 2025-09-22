@@ -8,10 +8,15 @@
     <title>D-OS Support</title>
 </head>
 <body>
+    <div class="message" id="messageDiv">
+        <button class="close" onclick="closeMessage()">X</button>
+        <p class="sans-serif-light" style="font-weight: bolder;">This is an Alpha version of D-OS Support, So you might encounter bugs.<br> Please report bugs to MadCode25's Github Repo.<br> 
+            You can report issues <a href="https://github.com/MadCode25/D-OS-Support/issues" style="text-decoration: none; color: rgb(119, 119, 119);">here</a>.</p>
+    </div>
     <div class="title" id="titleBar">
         <h1 class="sans-serif-light">D-OS Support</h1>
         <h4 class="sans-serif-light">What can I help about D-OS?</h4>
-        <h5 class="sans-serif-light">Version 1.6 Alpha</h5>
+        <h5 class="sans-serif-light">Version 1.8 Alpha</h5>
         <h6 class="sans-serif-light">Your Assistant of D-OS.</h6>
     </div>
 
@@ -23,7 +28,7 @@
     <!-- Fixed input bar at bottom -->
     <div class="inputBar">
         <input class="userInput" id="userInput" placeholder="Ask something about D-OS" />
-        <button class="send" id="sendButton" onclick="getAnswer()">Ask</button>
+        <button class="clickableButton" id="sendButton" onclick="getAnswer()">Ask</button>
     </div>
 
     <script src="Bot.js"></script>

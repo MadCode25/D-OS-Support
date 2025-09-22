@@ -57,7 +57,7 @@ function getAnswer() {
     const isFollowUp = [
         "why", "how", "tell me more", "explain more", "what do you mean",
         "what's that", "what is that", "really", "yes", "please", "sure", "yep", "yeah", "yup", "ok", "okay", "yes please"
-    ].some(phrase => input.includes(phrase));
+    ].some(phrase => input == phrase);
 
     if (isFollowUp && lastBotMessage) {
         handleFollowUp(input);
@@ -116,7 +116,14 @@ function getAnswer() {
     }
 
     else if (input === "oh") {
-        appendReply("Oh? Do you want to know more about D-OS?");
+        appendReply("Is there something specific you'd like to know or discuss about D-OS?");
+    }
+
+    else if (input.includes("bye") || input.includes("goodbye") || input.includes("see you") || input.includes("later")) {
+        appendReply("See ya! If you have more questions about D-OS, feel free to open this website anytime.");
+        setTimeout(function() {
+            window.close();
+        }, 2000);
     }
 
     // --- SINGLE fallback (only runs if no above matches) ---

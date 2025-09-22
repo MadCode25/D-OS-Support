@@ -67,7 +67,7 @@ body {
     outline: none;
 }
 
-.send {
+.clickableButton {
     margin-left: 10px;
     padding: 10px 20px;
     border-radius: 20px;
@@ -75,12 +75,29 @@ body {
     background-color: rgb(141, 141, 141);
     color: black;
     font-size: 16px;
-    font-style: bold;
     cursor: pointer;
 }
 
-.send:hover {
+.clickableButton:hover {
     background-color: rgb(173, 173, 173);
+}
+.message {
+    background-color: rgb(78, 78, 78);
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.close {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(141, 141, 141);
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    left: 60px;
+    position: absolute;
 }
 
 @keyframes glideUp {
